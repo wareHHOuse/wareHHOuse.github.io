@@ -1,8 +1,16 @@
-title: Just the Docs Template
-description: A starter template for a Jeykll site using the Just the Docs theme!
+title: The wareHHOuse
+description: The home of the DiSk++ and ProtoN computational codes
 theme: just-the-docs
 
-url: https://just-the-docs.github.io
+baseurl: ""
+url: https://wareHHOuse.github.io
 
-aux_links:
-  Template Repository: https://github.com/just-the-docs/just-the-docs-template
+permalink: pretty
+
+defaults:
+  - scope:
+      path: "docs"
+      type: "pages"
+    values:
+      layout: "default"
+
