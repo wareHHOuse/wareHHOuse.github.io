@@ -64,7 +64,16 @@ for (auto& cl : msh) /* for each cell in the mesh */
 
 ```
 
-Another example of the abstraction provided by DiSk++ is the code below, which computes the local grad-grad term of an HHO discretization. Notice in particular that the mesh is fully generic in terms of dimension and element shape; notice in addition the calls to `integrate()` and compare them with the mathematical definition of the HHO reconstruction.
+Another example of the abstraction provided by DiSk++ can be seen in the computation of the local grad-grad term of an HHO discretization which, we recall, is defined on a cell $$T$$ by the equations (see [] for all the symbol definitions)
+
+$$
+\begin{align}
+(\nabla R(\underline{v}_T), \nabla w)_T &= (\nabla v_T, \nabla w)_T + \sum_{F \in \partial T} (v_F - v_T, \mathbf{n}\cdot\nabla w)_F,\\
+(R(\underline{v}_T), 1)_T &= (v_T, 1)_T,
+\end{align}
+$$
+
+In the code below, notice in particular that the mesh is fully generic in terms of dimension and element shape; notice in addition the calls to `integrate()` and compare them with the mathematical definition of the HHO reconstruction.
 
 ```cpp
 template<typename Mesh, typename Space = hho_space<Mesh>>

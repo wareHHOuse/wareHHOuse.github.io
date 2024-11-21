@@ -4,11 +4,9 @@ parent: DiSk++
 nav_order: 2
 ---
 
-
 # Building and installing DiSk++
 {: .no_toc }
-
-DiSk++ is developed on and for Linux. Windows is explicitly not supported.
+The first thing you need to know is that DiSk++ is developed on and for Linux. Windows is explicitly not supported and macOS support is at a local minumum currently. Once the dependency to Intel MKL is removed, macOS will hopefully be supported again at the same level of Linux.
 
 ## Table of contents
 {: .no_toc .text-delta }
@@ -17,7 +15,6 @@ DiSk++ is developed on and for Linux. Windows is explicitly not supported.
 {:toc}
 
 ---
-
 ## Prerequisites
 There are some dependencies that need to be met in order to build and use DiSk++
 successfully. Below, the instructions for a Debian-based distribution: it should
@@ -36,3 +33,22 @@ be easy to adapt them to your favorite distro.
  
 
 ## Building DiSk++
+Once you have all the dependencies installed, you need to clone the repository and build the code. This reduces to:
+
+```sh
+git clone --recursive git@github.com:wareHHOuse/diskpp.git
+cd diskpp
+mkdir build
+cd build
+cmake -DCMAKE_BUILD_TYPE=Release
+make -j $(nproc)
+```
+
+The build process will take a while, as it builds all the applications bundled with Disk++. If you are not interested in the applications, instead of `cmake` you can use `ccmake ..`: this will start the CMake TUI and from there you can disable all the applications you don't want to compile.
+
+Once you are done, you may want to run the tests:
+```sh
+cd unit_tests
+make test
+```
+
