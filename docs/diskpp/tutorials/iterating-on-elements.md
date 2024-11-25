@@ -5,9 +5,23 @@ nav_order: 2
 ---
 
 
-# Tutorial 1: iterating on the mesh elements
+# Tutorial 1: creating a mesh and iterating on its elements
 
-Given the element-local point of view taken by DiSk++, the first skill you need to acquire is to iterate on the elements of a mesh and to acquire information about them. This tutorial will guide you on this.
+This tutorial will guide you in creating a mesh and iterating on its elements.
 
 {: .highlight}
 Code for this example: `apps/diskpp_tutorials/diskpp_tutorial_1.cpp`
+
+DiSk++ can read and use various kinds of mesh. It can also generate 
+
+## Creating a mesh on the unit square
+
+{% highlight cpp linenos %}
+using mesh_type = disk::simplicial_mesh<T,2>;
+mesh_type msh;
+auto mesher = disk::make_simple_mesher(msh);
+for (auto nr = 0; nr < num_refs; nr++)
+mesher.refine();
+{% endhighlight %}
+
+test test

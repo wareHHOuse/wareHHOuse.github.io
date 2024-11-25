@@ -27,3 +27,31 @@ This command does the following:
 To start developing your DiSk++ application, just edit `myapp/src/myapp.cpp`. Once you are done, go to the build directory and type `make`.
 
 ## The manual way
+
+In order to have some more control in the process of adding a new application to the DiSk++ tree, here you can find a summary of the steps taken automatically by `newapp.sh`.
+
+In the DiSk++ source tree, the applications live under the `apps/` subdirectory. Therefore, the first step is to create a new directory for your application and its main source file. Assuming you are in the root of the DiSk++ source tree and you want to call your application `myapp`, you simply do
+
+```
+mkdir -p apps/myapp/src
+touch apps/myapp/src/myapp.cpp
+```
+
+Then you need to create the `CMakeLists.txt` for your application. Its full path will be `apps/myapp/CMakeLists.txt`:
+
+```
+set(LINK_LIBS diskpp)
+
+add_executable(myapp src/myapp.cpp)
+target_link_libraries(myapp ${LINK_LIBS})
+install(TARGETS myapp RUNTIME DESTINATION bin)
+```
+
+Finally, you need to add your application to the DiSk++ file `apps/CMakeLists.txt`
+
+```
+option(BUILD_APP_MYAPP "Build myapp application" ON)
+if (BUILD_APP_MYAPP)
+    add_subdirectory(myapp)
+endif()
+```
