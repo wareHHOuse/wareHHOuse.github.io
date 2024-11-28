@@ -52,3 +52,12 @@ cd unit_tests
 make test
 ```
 
+## Building a Docker image
+Building DiSk++ via Docker is discouraged, as it will not give you the best experience for development. However, if you want to go that way, once you have Docker installed just move to `docker/` inside the DiSk++ source tree and say
+```sh
+sudo docker build -t diskpp .
+```
+The command will take quite a while, but it should automagically build a container where you can run DiSk++. After the command finishes, just move inside the container with
+```sh
+sudo docker run -it diskpp bash
+```
