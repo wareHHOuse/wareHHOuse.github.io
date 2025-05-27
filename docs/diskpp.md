@@ -12,9 +12,7 @@ DiSk++ is a C++ template library for the fast prototyping of Discontinuous Skele
 
 DiSk++ was initially born and is currently focused to support the development of the HHO method.
 
-The mathematical formulation of these methods is independent of the spatial
-dimension (so it does not change if you switch between 1D, 2D and 3D) and
-independent of the shape of the mesh cells. DiSk++ tries to replicate this flexibility and this level of abstraction in software.
+The mathematical formulation of polyhedral methods is in general independent of the spatial dimension (so it does not change if you switch between 1D, 2D and 3D) and independent of the shape of the mesh cells. DiSk++ aims to replicate this flexibility and this level of abstraction in software, giving the programmer an abstraction as close as possible to the mathematical writing of the method of choice.
 
 Despite the "Discontinuous Skeletal" nature of DiSk++, partial support for other families of methods is available, in particular:
  
